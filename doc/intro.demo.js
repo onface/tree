@@ -6,18 +6,20 @@ class Intro extends Component {
         super(props)
         const self = this
         self.state = {
-            value: []
+            checked: ['1-1']
         }
         self.tree = new FaceTree({
+            // 配置所有选项 data 和 选中项 checked
             input: function () {
                 return {
                     data: self.props.options,
-                    value: self.state.value
+                    checked: self.state.checked
                 }
             },
+            // 接收 tree.toggleCheck(value) 运行后的选中项
             output: function (checkeds) {
                 self.setState({
-                    value: checkeds
+                    checked: checkeds
                 })
             }
         })
@@ -29,9 +31,10 @@ class Intro extends Component {
                 <label>
                     <input
                         type="checkbox"
-                        checked={self.state.value.includes(data.value)}
+                        checked={self.tree.render.checked(data.value)}
                         onChange={() => {
-                            self.tree.toggleCheck(data.value)
+                            self.tree.action.switch(data.value)
+                            // self.tree.action.switch(data.value, true)
                         }}
                     />
                     {data.label}
