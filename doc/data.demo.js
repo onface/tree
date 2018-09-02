@@ -1,63 +1,63 @@
 var data = [
     {
-        name: 'nimo',
-        id:'1',
+        label: 'nimo',
+        value:'1',
         child: [
             {
-                name: 'tim',
-                id:'11',
+                label: 'tim',
+                value:'11',
                 child: [
                     {
-                        name: 'nico',
-                        id:'111',
+                        label: 'nico',
+                        value:'111',
                     },
                     {
-                        name: 'Jack',
-                        id:'112',
+                        label: 'Jack',
+                        value:'112',
                         child: [
                             {
-                                name: 'Jen',
-                                id:'1121',
+                                label: 'Jen',
+                                value:'1121',
                             }
                         ]
                     }
                 ]
             },
             {
-                name: 'sam',
-                id:'12',
+                label: 'sam',
+                value:'12',
                 child: [
                     {
-                        name: 'oil',
-                        id:'121',
+                        label: 'oil',
+                        value:'121',
                     },
                     {
-                        name: 'poli',
-                        id:'122',
+                        label: 'poli',
+                        value:'122',
                     }
                 ]
             }
         ]
     },
     {
-        name: 'Naer',
-        id:'2',
+        label: 'Naer',
+        value:'2',
         child: [
             {
-                name: 'Que',
-                id:'21',
+                label: 'Que',
+                value:'21',
             },
             {
-                name: 'Beer',
-                id:'22',
+                label: 'Beer',
+                value:'22',
                 child: [
                     {
-                        name: 'noname',
-                        id:'221',
+                        label: 'noname',
+                        value:'221',
                     },
                     {
-                        name: 'yumi',
-                        id:'222',
+                        label: 'yumi',
+                        value:'222',
                     }
                 ]
             }
