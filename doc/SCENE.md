@@ -14,7 +14,7 @@
 
 ````code
 {
-    title: 'loop循环渲染',
+    title: 'loop函数循环渲染',
     desc: '',
     html: '<div id="loop-demo" style="padding:1em;" ></div>',
     source: './loop.demo.js',
