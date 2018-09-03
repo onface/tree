@@ -1,18 +1,18 @@
 # 场景示例
 
-## notId
+## notValue
 ** *Question* **        
 在某些场景下, 数据源会出现以下几种情况
-1. 只有value, 没有id
-2. 服务器端给到的 id 数据并不是唯一的
-3. 压根就没有可识别节点key, 更别说id了     
+1. 只有value, 没有value
+2. 服务器端给到的 value 数据并不是唯一的
+3. 压根就没有可识别节点key, 更别说value了     
 
 ** *Solution* **        
-利用工具类方法[map](./README.md#map) 生成唯一id        
+利用工具类方法[map](./README.md#map) 生成唯一value        
 ** *Explanation* **   
 
 >       
-建议根据上下级关系扩展出$id或id      
+建议根据上下级关系扩展出$value或value      
 就好像一个大家族，
 >          
     大爷爷     
@@ -28,20 +28,20 @@
     小儿子
 >
 直接说小儿子，只能知道是第三个儿子，并不能知道他爸爸和爷爷是谁，所以需要        
-$id = '大爷爷 生的 二叔叔 生的 小儿子'       
-$id = '小爷爷 生的 大叔叔 生的 二儿子'    
+$value = '大爷爷 生的 二叔叔 生的 小儿子'       
+$value = '小爷爷 生的 大叔叔 生的 二儿子'    
 >
-最终通过将 $id进行 $id.split(' 生的 ') 可以找出所有的父级 id      
+最终通过将 $value进行 $value.split(' 生的 ') 可以找出所有的父级 value      
 
 
 ** *Way* **   
-用此数据举例 [点此查看示例数据源](./DATA.md#notIdData)
+用此数据举例 [点此查看示例数据源](./DATA.md#notValueData)
 ````code
 {
     title: '处理方式',
-    desc: '`create unique id`',
-    js: './createUId.demo.js',
-    source: './createUId.demo.js',
+    desc: '`create unique value`',
+    js: './createUValue.demo.js',
+    source: './createUValue.demo.js',
     open: true
 }
 ````
@@ -51,45 +51,45 @@ $id = '小爷爷 生的 大叔叔 生的 二儿子'
 ````js
 [
   {
-    "name": "nico",
+    "label": "nico",
     "value": "I'm grandpa one.",
-    "child": [
+    "children": [
       {
-        "name": "nimo",
+        "label": "nimo",
         "value": "I'm dad one.",
-        "child": [
+        "children": [
           {
-            "name": "nipo",
+            "label": "nipo",
             "value": "I'm son one.",
-            "$indexID": "0_0_0"
+            "$index": "0_0_0"
           }
         ],
-        "$indexID": "0_0"
+        "$index": "0_0"
       },
       {
-        "name": "nina",
+        "label": "nina",
         "value": "I'm mom one.",
-        "$indexID": "0_1"
+        "$index": "0_1"
       }
     ],
-    "$indexID": "0"
+    "$index": "0"
   },
   {
-    "name": "tim",
+    "label": "tim",
     "value": "I'm grandpa two.",
-    "child": [
+    "children": [
       {
-        "name": "tom",
+        "label": "tom",
         "value": "I'm dad two.",
-        "$indexID": "1_0"
+        "$index": "1_0"
       },
       {
-        "name": "oil",
+        "label": "oil",
         "value": "I'm mom two.",
-        "$indexID": "1_1"
+        "$index": "1_1"
       }
     ],
-    "$indexID": "1"
+    "$index": "1"
   }
 ]
 ````

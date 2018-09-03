@@ -29,93 +29,93 @@ var TreeLogic = require('face-tree');
 > 打印数据可以控制台查看,也可以展开`</>`查看下列简列
 
 itemArray
-````js
+```js
 [
-  { name: nimo, id: 1, child: [ [Object], [Object] ] },
-  { name: tim, id: 11, child: [ [Object], [Object] ] },
-  { name: nico, id: 111 },
-  { name: Jack, id: 112, child: [ [Object] ] },
-  { name: Jen, id: 1121 },
-  { name: sam, id: 12, child: [ [Object], [Object] ] },
-  { name: oil, id: 121 },
-  { name: poli, id: 122 },
-  { name: Naer, id: 2, child: [ [Object], [Object] ] },
-  { name: Que, id: 21 },
-  { name: Beer, id: 22, child: [ [Object], [Object] ] },
-  { name: noname, id: 221 },
-  { name: yumi, id: 222 }
+  { label: nimo, value: 1, children: [ [Object], [Object] ] },
+  { label: tim, value: 11, children: [ [Object], [Object] ] },
+  { label: nico, value: 111 },
+  { label: Jack, value: 112, children: [ [Object] ] },
+  { label: Jen, value: 1121 },
+  { label: sam, value: 12, children: [ [Object], [Object] ] },
+  { label: oil, value: 121 },
+  { label: poli, value: 122 },
+  { label: Naer, value: 2, children: [ [Object], [Object] ] },
+  { label: Que, value: 21 },
+  { label: Beer, value: 22, children: [ [Object], [Object] ] },
+  { label: nolabel, value: 221 },
+  { label: yumi, value: 222 }
 ]
-````
+```
 parentMap
-````js
+```js
 {
     nimo: {
         index: [],
         data: [],
-        name: []
+        label: []
     },
     tim: {
         index: [0],
         data: [[Object]],
-        name: ['nimo']
+        label: ['nimo']
     },
     nico: {
         index: [0, 0],
         data: [[Object], [Object]],
-        name: ['nimo', 'tim']
+        label: ['nimo', 'tim']
     },
     Jack: {
         index: [0, 0],
         data: [[Object], [Object]],
-        name: ['nimo', 'tim']
+        label: ['nimo', 'tim']
     },
     Jen: {
         index: [0, 0, 1],
         data: [[Object], [Object], [Object]],
-        name: ['nimo', 'tim', 'Jack']
+        label: ['nimo', 'tim', 'Jack']
     },
     sam: {
         index: [0],
         data: [[Object]],
-        name: ['nimo']
+        label: ['nimo']
     },
     oil: {
         index: [0, 1],
         data: [[Object], [Object]],
-        name: ['nimo', 'sam']
+        label: ['nimo', 'sam']
     },
     poli: {
         index: [0, 1],
         data: [[Object], [Object]],
-        name: ['nimo', 'sam']
+        label: ['nimo', 'sam']
     },
     Naer: {
         index: [],
         data: [],
-        name: []
+        label: []
     },
     Que: {
         index: [1],
         data: [[Object]],
-        name: ['Naer']
+        label: ['Naer']
     },
     Beer: {
         index: [1],
         data: [[Object]],
-        name: ['Naer']
+        label: ['Naer']
     },
-    noname: {
+    nolabel: {
         index: [1, 1],
         data: [[Object], [Object]],
-        name: ['Naer', 'Beer']
+        label: ['Naer', 'Beer']
     },
     yumi: {
         index: [1, 1],
         data: [[Object], [Object]],
-        name: ['Naer', 'Beer']
+        label: ['Naer', 'Beer']
     }
 }
-````
+```
 
 ## map
 > 在forEach遍历方法上,返回一个新数组，数组中的元素为原始数组元素调用函数处理后的值      
@@ -130,100 +130,100 @@ parentMap
 }
 ````
 resultData
-````js
+```js
 [
   {
-    name: nimo,
-    id: 1,
-    child: [
+    label: nimo,
+    value: 1,
+    children: [
       {
-        name: tim,
-        id: 11,
-        child: [
+        label: tim,
+        value: 11,
+        children: [
           {
-            name: nico,
-            id: 111,
-            $indexID: 0_0_0,
-            $id: 1_11_111
+            label: nico,
+            value: 111,
+            $index: 0_0_0,
+            $value: 1_11_111
           },
           {
-            name: Jack,
-            id: 112,
-            child: [
+            label: Jack,
+            value: 112,
+            children: [
               {
-                name: Jen,
-                id: 1121,
-                $indexID: 0_0_1_0,
-                $id: 1_11_112_1121
+                label: Jen,
+                value: 1121,
+                $index: 0_0_1_0,
+                $value: 1_11_112_1121
               }
             ],
-            $indexID: 0_0_1,
-            $id: 1_11_112
+            $index: 0_0_1,
+            $value: 1_11_112
           }
         ],
-        $indexID: 0_0,
-        $id: 1_11
+        $index: 0_0,
+        $value: 1_11
       },
       {
-        name: sam,
-        id: 12,
-        child: [
+        label: sam,
+        value: 12,
+        children: [
           {
-            name: oil,
-            id: 121,
-            $indexID: 0_1_0,
-            $id: 1_12_121
+            label: oil,
+            value: 121,
+            $index: 0_1_0,
+            $value: 1_12_121
           },
           {
-            name: poli,
-            id: 122,
-            $indexID: 0_1_1,
-            $id: 1_12_122
+            label: poli,
+            value: 122,
+            $index: 0_1_1,
+            $value: 1_12_122
           }
         ],
-        $indexID: 0_1,
-        $id: 1_12
+        $index: 0_1,
+        $value: 1_12
       }
     ],
-    $indexID: 0,
-    $id: 1
+    $index: 0,
+    $value: 1
   },
   {
-    name: Naer,
-    id: 2,
-    child: [
+    label: Naer,
+    value: 2,
+    children: [
       {
-        name: Que,
-        id: 21,
-        $indexID: 1_0,
-        $id: 2_21
+        label: Que,
+        value: 21,
+        $index: 1_0,
+        $value: 2_21
       },
       {
-        name: Beer,
-        id: 22,
-        child: [
+        label: Beer,
+        value: 22,
+        children: [
           {
-            name: noname,
-            id: 221,
-            $indexID: 1_1_0,
-            $id: 2_22_221
+            label: nolabel,
+            value: 221,
+            $index: 1_1_0,
+            $value: 2_22_221
           },
           {
-            name: yumi,
-            id: 222,
-            $indexID: 1_1_1,
-            $id: 2_22_222
+            label: yumi,
+            value: 222,
+            $index: 1_1_1,
+            $value: 2_22_222
           }
         ],
-        $indexID: 1_1,
-        $id: 2_22
+        $index: 1_1,
+        $value: 2_22
       }
     ],
-    $indexID: 1,
-    $id: 2
+    $index: 1,
+    $value: 2
   }
 ]
-````
+```
 
 ## find
 > 返回值
@@ -248,22 +248,22 @@ resultData
 }
 ````
 result
-````js
+```js
 {
   target: {
-    name: Beer,
-    id: 22,
-    child: [ [object] , [object] ]
+    label: Beer,
+    value: 22,
+    children: [ [object] , [object] ]
   },
   siblings:[
     {
-        name: Que,
-        id: 21
+        label: Que,
+        value: 21
     },
     {
-        name: Beer,
-        id: 22,
-        child: [ [object] , [object] ]
+        label: Beer,
+        value: 22,
+        children: [ [object] , [object] ]
     }
   ],
   parent: {
@@ -272,24 +272,24 @@ result
     ],
     data: [
       {
-        name: Naer,
-        id: 2,
-        child: [
+        label: Naer,
+        value: 2,
+        children: [
           {
-            name: Que,
-            id: 21
+            label: Que,
+            value: 21
           },
           {
-            name: Beer,
-            id: 22,
-            child: [
+            label: Beer,
+            value: 22,
+            children: [
               {
-                name: noname,
-                id: 221
+                label: nolabel,
+                value: 221
               },
               {
-                name: yumi,
-                id: 222
+                label: yumi,
+                value: 222
               }
             ]
           }
@@ -298,7 +298,7 @@ result
     ]
   }
 }
-````
+```
 
 ## some
 
@@ -314,20 +314,20 @@ result
 > 打印数据可以控制台查看,也可以展开`</>`查看下列简列
 
 visitedItem
-````js
+```js
 [
   {
-    "name": "nimo",
-    "id": "1",
-    "child": [ [Object], [Object] ]
+    "label": "nimo",
+    "value": "1",
+    "children": [ [Object], [Object] ]
   },
   {
-    "name": "tim",
-    "id": "11",
-    "child": [ [Object], [Object] ]
+    "label": "tim",
+    "value": "11",
+    "children": [ [Object], [Object] ]
   }
 ]
-````
+```
 
 ## filter
 
@@ -341,23 +341,23 @@ visitedItem
 }
 ````
 result
-````js
+```js
 [
   {
-    name: nimo,
-    id: 1,
-    child: [
+    label: nimo,
+    value: 1,
+    children: [
       {
-        name: tim,
-        id: 11,
-        child: [
+        label: tim,
+        value: 11,
+        children: [
           {
-            name: nico,
-            id: 111
+            label: nico,
+            value: 111
           }
         ]
       }
     ]
   }
 ]
-````
+```

@@ -1,19 +1,18 @@
-import { TreeLogic } from 'face-tree';
+import TreeLogic from 'face-tree';
 var data = require('./data.demo');
 
 
 var checkedArray = ['111','12']
 var tree = new TreeLogic({
-    getData() {
-        return data
+    input(){
+        return {
+            data:data,
+            checked:checkedArray
+        }
     },
-    getChecked() {
-        return checkedArray
-    },
-    judgeChild:'child',
-    onToggleCheck(checkeds) {
+    output(checkeds) {
         console.log('----- toggleCheck checkeds -----\n',checkeds)
         // checkedArray = extend(true,[],checkeds)
     }
 })
-tree.toggleCheck('112')
+tree.action.switch('112')

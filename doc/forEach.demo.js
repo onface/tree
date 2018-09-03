@@ -1,11 +1,11 @@
-var TreeLogic = require('face-tree');
+var TreeForEach = require('face-tree/lib/forEach');
 var data = require('./data.demo');
 
 var itemArray = []
 var parentMap = {}
 
 
-TreeLogic.forEach(data, 'child', function (item, index, array) {
+TreeForEach(data, 'children', function (item, index, array) {
     itemArray.push(item)
     parentMap[item.name] = {
         index: this.$parent.index,

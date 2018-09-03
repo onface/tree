@@ -2,11 +2,11 @@ var data = [
     {
         label: 'nimo',
         value:'1',
-        child: [
+        children: [
             {
                 label: 'tim',
                 value:'11',
-                child: [
+                children: [
                     {
                         label: 'nico',
                         value:'111',
@@ -14,7 +14,7 @@ var data = [
                     {
                         label: 'Jack',
                         value:'112',
-                        child: [
+                        children: [
                             {
                                 label: 'Jen',
                                 value:'1121',
@@ -26,7 +26,7 @@ var data = [
             {
                 label: 'sam',
                 value:'12',
-                child: [
+                children: [
                     {
                         label: 'oil',
                         value:'121',
@@ -42,7 +42,7 @@ var data = [
     {
         label: 'Naer',
         value:'2',
-        child: [
+        children: [
             {
                 label: 'Que',
                 value:'21',
@@ -50,7 +50,7 @@ var data = [
             {
                 label: 'Beer',
                 value:'22',
-                child: [
+                children: [
                     {
                         label: 'noname',
                         value:'221',
