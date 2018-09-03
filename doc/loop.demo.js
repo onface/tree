@@ -26,17 +26,17 @@ class LoopDome extends Component {
     }
     render() {
         const self = this
-            return (
+        return (
             <ul>
                 {
                     self.tree.loop(function (data, subRender) {
                         console.log(data, subRender)
                         return (
-                            <li>
-                                <input  /> {data.label}
+                            <li key={data.value}>
+                                <input type="checkbox" /> {data.label}
                                 {
                                     subRender?
-                                    (<ul>{subRender}</ul>)
+                                    (<ul>{subRender()}</ul>)
                                     :false
                                 }
                             </li>

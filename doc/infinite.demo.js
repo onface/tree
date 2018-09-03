@@ -26,46 +26,25 @@ class InfiniteDome extends Component {
     }
     render() {
         const self = this
-        const renderLabel = function (data) {
-            return (
-                <label>
-                    <input
-                        type="checkbox"
-                        checked={self.tree.render.checked(data.value)}
-                        onChange={() => {
-                            self.tree.action.switch(data.value)
-                            // self.tree.action.switch(data.value, true)
-                        }}
-                    />
-                    {data.label}
-                </label>
-
-            )
-        }
-        let loop = function(lists, itemComponent){
-        	return (
-        		<ul>
-    			{
-    				lists.map(function(item){
+        let loop = function(lists){
+        	return lists.map(function(item){
     					return (
     						<li key={item.value} >
-                                {itemComponent(item)}
+                                <input type="checkbox"/> 
+                                {item.label}
                                 {
                                 	Array.isArray(item.children)
-                                	? loop(item.children, itemComponent)
+                                	? (<ul>{loop(item.children)}</ul>)
                                 	: null
                                 }
                             </li>
 						)
     				})
-    			}
-        		</ul>
-    		)
         }
         return (
-            <div>
-                {loop(self.props.options, renderLabel)}
-            </div>
+            <ul>
+            {loop(self.props.options)}
+            </ul>
         )
     }
 }
