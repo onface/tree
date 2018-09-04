@@ -1,16 +1,8 @@
 # 工具类
 
-## 加载调用
-```js
-import TreeLogic from 'face-tree';
-```
-或
-```js
-var TreeLogic = require('face-tree');
-```
 
 ## forEach
-递归遍历, 从浅至深 , 从上至下
+递归遍历, 从浅至深, 从上至下
 
 > Tips:         
 > forEach(data, judgeChild, handler(item, index, currentArray))       
@@ -19,33 +11,16 @@ var TreeLogic = require('face-tree');
 
 ````code
 {
-    title: '基础使用',
-    desc: '`desc`',
-    js: './forEach.demo.js',
+    title: 'forEach',
+    desc: '',
+    html: '<div id="forEach-demo"></div>',
     source: './forEach.demo.js',
-    open: true
+    side: true,
+    open: false
 }
 ````
-> 打印数据可以控制台查看,也可以展开`</>`查看下列简列
 
-itemArray
-```js
-[
-  { label: nimo, value: 1, children: [ [Object], [Object] ] },
-  { label: tim, value: 11, children: [ [Object], [Object] ] },
-  { label: nico, value: 111 },
-  { label: Jack, value: 112, children: [ [Object] ] },
-  { label: Jen, value: 1121 },
-  { label: sam, value: 12, children: [ [Object], [Object] ] },
-  { label: oil, value: 121 },
-  { label: poli, value: 122 },
-  { label: Naer, value: 2, children: [ [Object], [Object] ] },
-  { label: Que, value: 21 },
-  { label: Beer, value: 22, children: [ [Object], [Object] ] },
-  { label: nolabel, value: 221 },
-  { label: yumi, value: 222 }
-]
-```
+
 parentMap
 ```js
 {
