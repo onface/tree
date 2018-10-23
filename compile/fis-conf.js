@@ -93,6 +93,12 @@ if (fis.project.currentMedia() !== 'npm') {
                     compile: {
                         code: function (source, data, info) {
                             var settings = json5.parse(source)
+                            if (typeof settings.source === 'undefined') {
+                                if (!settings.run) {
+                                    throw new Error(__dirname + '/compile/fis-conf.js: \r\n````code\r\n{...}\r\n````\r\n must have source or run')
+                                }
+                                settings.source = settings.run
+                            }
                             var filePath= path.join(info.file.dirname, settings.source)
                             info.deps = info.deps || []
                             info.deps.push(filePath)
@@ -101,7 +107,7 @@ if (fis.project.currentMedia() !== 'npm') {
                             settings.title = settings.title || path.parse(filePath).name
                             settings.html = settings.html || ''
                             settings.side = typeof settings.side === 'undefined'? false: settings.side
-                            settings.run = typeof settings.run === 'undefined'? true: settings.run
+                            settings.run = typeof settings.run === 'undefined'? false: settings.run
                             settings.files = settings.files || []
                             code = code.replace(/\/\*ONFACE-DEL\*\/.*/g, '')
                             var neatCode = code
@@ -134,7 +140,7 @@ if (fis.project.currentMedia() !== 'npm') {
                             if (fis.project.currentMedia() === 'dev') {
                                 scriptCode = `
                                 <script data-markrun-lastrun="true">
-                                document.write('<scri' + 'pt src="${settings.source}?v=${iPackage.version}"' + '" ></sc' + 'ript>')
+                                    document.write('<scri' + 'pt src="${settings.run}?v=${iPackage.version}"' + '" ></sc' + 'ript>')
                                 </script>
                                 `
                             }
@@ -145,7 +151,7 @@ if (fis.project.currentMedia() !== 'npm') {
                             return {
                                 lang: 'replace',
                                 code: `
-    <div class="face-one-code ${settings.open?' face-one-code--open':''} ${settings.run?' face-one-code--run':''} ${settings.side?' face-one-code--side':''}">
+    <div ${settings.side && settings.height?`style="height: ${settings.height}em;"`:''}  class="face-one-code ${settings.open?' face-one-code--open':''} ${settings.run?' face-one-code--run':''} ${settings.side?' face-one-code--side':''} ${settings.height?' face-one-code--part':''}">
                         <div class="face-one-code-F-view">
                             <div class="face-one-code-example">
                                 ${settings.html}
@@ -155,19 +161,25 @@ if (fis.project.currentMedia() !== 'npm') {
                                 <div class="face-one-code-info-desc">
                                     ${markrun(settings.desc, {template: '<%- content %>'})}
                                 </div>
-                                <span class="face-one-code-info-switchCode fi fi-${settings.side?'ellipsis':'code'}"></span>
+                                <span class="face-one-code-info-switchCode ${settings.side?'fi fi-ellipsis':''}">
+                                    ${!settings.side?'<img src="https://onface.live/design/media/nice/dev.svg" alt="">':''}
+                                </span>
                             </div>
                         </div>
-                        <div class="face-one-code-source"  >
+                        <div class="face-one-code-source" ${!settings.side && settings.height? `style="height: ${settings.height}em;"`:''}   >
                             <div class="face-one-code-source-tool">
                                 ${
                                     settings.run?
                                     `<form class="face-one-code-source-tool-preview" action="https://codesandbox.io/api/v1/sandboxes/define" method="post" target="_blank" >
                                         <input type="hidden" name="parameters" value="${parametersData}">
-                                        <button type="submit" class="fi fi-edit face-one-code-source-tool-preview-submit" ></button>
+                                        <button type="submit" class="face-one-code-source-tool-preview-submit" >
+                                            <img src="https://onface.live/design/media/cute/edit.svg" alt="">
+                                        </button>
                                     </form>`:''
                                 }
-                                <span class="face-one-code-source-tool-copy fi fi-copy"></span>
+                                <span class="face-one-code-source-tool-copy">
+                                    <img src="https://onface.live/design/media/nice/folder.svg" alt="">
+                                </span>
                             </div>
                             ${code}
                         </div>
