@@ -2,28 +2,6 @@ import React , { Component } from "react"
 import ReactDOM from "react-dom"
 import FaceTree from "face-tree"
 class InfiniteDome extends Component {
-    constructor (props) {
-        super(props)
-        const self = this
-        self.state = {
-            checked: ['1-1']
-        }
-        self.tree = new FaceTree({
-            // 配置所有选项 data 和 选中项 checked
-            input: function () {
-                return {
-                    data: self.props.options,
-                    checked: self.state.checked
-                }
-            },
-            // 接收 tree.toggleCheck(value) 运行后的选中项
-            output: function (checkeds) {
-                self.setState({
-                    checked: checkeds
-                })
-            }
-        })
-    }
     render() {
         const self = this
         let loop = function(lists){
@@ -87,6 +65,7 @@ InfiniteDome.defaultProps = {
         }
     ]
 }
+/*ONFACE-DEL*/InfiniteDome = require("react-hot-loader").hot(module)(InfiniteDome)
 ReactDOM.render(
     <InfiniteDome />,
     document.getElementById('infinite-demo')

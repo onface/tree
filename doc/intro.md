@@ -23,7 +23,8 @@ face-tree 用于处理树形数据的数据处理，是底层的数据逻辑封�
     desc: '',
     html: '<div id="intro-demo" style="padding:1em;" ></div>',
     source: './intro.demo.js',
-    side: true
+    run: './intro.demo.js',
+    side: false
 }
 ````
 [示例：无线循环渲染](./SCENE.md)

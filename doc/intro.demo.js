@@ -17,9 +17,9 @@ class Intro extends Component {
                 }
             },
             // 接收 tree.toggleCheck(value) 运行后的选中项
-            output: function (checkeds) {
+            output: function (value) {
                 self.setState({
-                    checked: checkeds
+                    checked: value.checked
                 })
             }
         })
@@ -97,6 +97,7 @@ Intro.defaultProps = {
         }
     ]
 }
+/*ONFACE-DEL*/Intro = require("react-hot-loader").hot(module)(Intro)
 ReactDOM.render(
     <Intro />,
     document.getElementById('intro-demo')

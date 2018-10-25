@@ -17,9 +17,9 @@ class LoopDome extends Component {
                 }
             },
             // 接收 tree.toggleCheck(value) 运行后的选中项
-            output: function (checkeds) {
+            output: function (value) {
                 self.setState({
-                    checked: checkeds
+                    checked: value.checked
                 })
             }
         })
@@ -33,8 +33,15 @@ class LoopDome extends Component {
                         // console.log(data, subRender)
                         return (
                             <li key={data.value}>
-                                <input type="checkbox" /> 
-                                 {data.label}
+                                <input 
+                                    type="checkbox" 
+                                    checked={self.tree.render.checked(data.value)}
+                                    onChange={() => {
+                                        self.tree.action.switch(data.value)
+                                    }}
+                                /> 
+                                {data.label}
+                                {/* subRender渲染子节点 */}
                                 {
                                     subRender?
                                     (<ul>{subRender()}</ul>)
