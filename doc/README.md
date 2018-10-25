@@ -18,27 +18,22 @@
   position: relative;
   padding-left: 1.3em;
 }
-.face-tree-node--open .face-tree-node-open:before { content: '-';}
-.face-tree-node--close .face-tree-node-open:before { content: '+';}
+.face-tree-node--open .face-tree-node-icon:before { content: '-';}
+.face-tree-node--close .face-tree-node-icon:before { content: '+';}
 .face-tree-node--close {
-  height: 22px;
+  height: 30px;
   overflow-y: hidden;
 }
-.face-tree-node-open {
+.face-tree-node-icon {
   position: absolute;
   left: 0;
   top: 0;
   color: #999;
+  width:1.3em;
+  line-height:28px;
+  text-align:center;
+  cursor:pointer;
 }
-.face-tree-node-label { display: block; }
-.face-tree-node-label:hover { background-color: aliceblue;}
-.face-tree-node-check {
-  margin-right: 0.3em;
-  vertical-align: middle;
-  display: inline-block;
-}
-.face-tree-node-text {
-  display: inline-block;
-  vertical-align: middle;
-}
+.face-tree-node-label:hover { background-color: #f0f8ff;}
 ````
+

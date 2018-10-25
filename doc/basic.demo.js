@@ -2,6 +2,7 @@ import React , { Component } from "react"
 import ReactDOM from "react-dom"
 import FaceTree from "face-tree"
 import cls from 'classnames'
+import Checkbox from 'checkbox.react'
 class BasicDome extends Component {
     constructor (props) {
         super(props)
@@ -11,7 +12,7 @@ class BasicDome extends Component {
             open:[]
         }
         self.tree = new FaceTree({
-            // 配置所有选项 data 和 选中项 checked
+            // 配置 所有选项data 选中项checked 展开项open
             input: function () {
                 return {
                     data: self.props.options,
@@ -31,7 +32,7 @@ class BasicDome extends Component {
     render() {
         const self = this
         return (
-            <div style={{height:'200px'}}>
+            <div style={{height:'250px'}}>
                 {
                     self.tree.render.loop(function (data, subRender) {
                         // open [渲染类函数]判断当前节点是否展开(需要声明时input中配置open)
@@ -47,10 +48,10 @@ class BasicDome extends Component {
                             >
                             	{/* haschild [渲染类函数]判断是否有子节点 */}
 	                            {
-	                            	subRender
+	                            	self.tree.render.hasChild(data)
 	                            	? (
 	                            		<div 
-		                            		className="face-tree-node-open"
+		                            		className="face-tree-node-icon"
 		                            		onClick={function(){
 		                            			// toggle [操作类函数]切换展开收缩
 		                            			self.tree.action.toggle(data.value)
@@ -58,19 +59,17 @@ class BasicDome extends Component {
 	                            		></div>
                             		) : null
 	                            }
-	                            <label className="face-tree-node-label">
-	                                <input 
-	                                    type="checkbox" 
-	                                    className="face-tree-node-check"
-	                                    // checked [渲染类函数]判断是否选中
-	                                    checked={self.tree.render.checked(data.value)}
-	                                    onChange={() => {
-	                                    	// switch [操作类函数]切换选中或取消
-	                                        self.tree.action.switch(data.value)
-	                                    }}
-	                                /> 
-	                                <div className="face-tree-node-text">{data.label}</div>
-	                            </label>
+	                            <Checkbox
+		                            className="face-tree-node-label"
+		                            // haschecked [渲染类函数]判断子孙节点中是否有选中的
+		                            // themes={self.tree.render.hasChildChecked(data) ? 'partial' : ''}
+		                            // checked [渲染类函数]判断是否选中
+                                    checked={self.tree.render.checked(data.value)}
+		                            onChange={() => {
+                                    	// switch [操作类函数]切换选中或取消
+                                        self.tree.action.switch(data.value)
+                                    }}
+	                            >{data.label}</Checkbox>
 		                        {/* subRender 渲染子节点 */}
                                 { subRender ? subRender() : false }
                             </div>
