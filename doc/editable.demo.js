@@ -3,19 +3,20 @@ import ReactDOM from "react-dom"
 import FaceTree from "face-tree"
 import cls from 'classnames'
 import Checkbox from 'checkbox.react'
-class BasicDome extends Component {
+class EditDome extends Component {
     constructor (props) {
         super(props)
         const self = this
         self.state = {
-            checked: ['1-1'],
-            open:[]
+            data:props.options,
+            checked: [],
+            open:['1','2']
         }
         self.tree = new FaceTree({
             // 配置 所有选项data 选中项checked 展开项open
             input: function () {
                 return {
-                    data: self.props.options,
+                    data: self.state.data,
                     checked: self.state.checked,
                     open: self.state.open, 
                 }
@@ -38,20 +39,14 @@ class BasicDome extends Component {
                         return (
                             <div 
                             	key={data.value} 
-                            	className={cls({
-                            		"face-tree-node":true,
-                            		// open [渲染类函数]判断当前节点是否展开(需要声明时input中配置open)
-                        			"face-tree-node--close":!self.tree.render.open(data.value),
-                            	})}
+                            	className="face-tree-node"
                             >
-                            	{/* haschild [渲染类函数]判断是否有子节点 */}
 	                            {
 	                            	self.tree.render.hasChild(data)
 	                            	? (
 	                            		<div 
 		                            		className="face-tree-node-icon"
 		                            		onClick={function(){
-		                            			// toggle [操作类函数]切换展开收缩
 		                            			self.tree.action.toggle(data.value)
 		                            		}}
 	                            		></div>
@@ -59,16 +54,51 @@ class BasicDome extends Component {
 	                            }
 	                            <Checkbox
 		                            className="face-tree-node-label"
-		                            // haschecked [渲染类函数]判断子孙节点中是否有选中的
-		                            // themes={self.tree.render.hasChildChecked(data) ? 'partial' : ''}
 		                            // checked [渲染类函数]判断是否选中
                                     checked={self.tree.render.checked(data.value)}
 		                            onChange={() => {
-                                    	// switch [操作类函数]切换选中或取消
                                         self.tree.action.switch(data.value)
                                     }}
 	                            >{data.label}</Checkbox>
-		                        {/* subRender 渲染子节点 */}
+                                <div className="face-tree-node-tool">
+                                    <span 
+                                        onClick={function(){
+                                            // 模拟一个新数据
+                                            let mockData = {
+                                                label:Math.random().toString(36).substr(2),
+                                                value:new Date().getTime()
+                                            }
+                                            if(confirm('模拟用户创建一个新数据\n名称:'+mockData.label)){
+                                                // 将数据插入数据源中
+                                                let dataOption = self.tree.map(function(item){
+                                                    if(item.value == data.value){
+                                                        item.children = item.children || []
+                                                        item.children.push(mockData)
+                                                    }
+                                                    return item
+                                                })
+                                                console.log(dataOption)
+                                                self.setState({
+                                                    data:dataOption
+                                                })
+                                            }
+                                        }}
+                                    >⊕</span>
+                                    <span 
+                                        onClick={function(){
+                                            if(confirm('确认删除数据 "'+data.label+'" 吗?')){
+                                                // 将当前数据从数据源中删除
+                                                let dataOption = self.tree.filter(function(item){
+                                                    return item.value != data.value
+                                                })
+                                                self.setState({
+                                                    data:dataOption
+                                                })
+                                            }
+                                        }}
+                                    >Θ</span>
+                                    
+                                </div>
                                 { subRender ? subRender() : false }
                             </div>
                         )
@@ -79,7 +109,7 @@ class BasicDome extends Component {
     }
 }
 // 树形选型数据结构
-BasicDome.defaultProps = {
+EditDome.defaultProps = {
     options: [
         {
             label: '上海市',
@@ -92,16 +122,6 @@ BasicDome.defaultProps = {
                 {
                     label: '虹口区',
                     value: '1-2',
-                    children: [
-		                {
-		                    label: '凉城',
-		                    value: '1-2-1'
-		                },
-		                {
-		                    label: '大场',
-		                    value: '1-2-2'
-		                }
-		            ]
                 }
             ]
         },
@@ -117,8 +137,8 @@ BasicDome.defaultProps = {
         }
     ]
 }
-/*ONFACE-DEL*/BasicDome = require("react-hot-loader").hot(module)(BasicDome)
+/*ONFACE-DEL*/EditDome = require("react-hot-loader").hot(module)(EditDome)
 ReactDOM.render(
-    <BasicDome />,
-    document.getElementById('basic-demo')
+    <EditDome />,
+    document.getElementById('editable-demo')
 )
