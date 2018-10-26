@@ -77,13 +77,12 @@ class EditDome extends Component {
                                                     }
                                                     return item
                                                 })
-                                                console.log(dataOption)
                                                 self.setState({
                                                     data:dataOption
                                                 })
                                             }
                                         }}
-                                    >⊕</span>
+                                    >➕</span>
                                     <span 
                                         onClick={function(){
                                             if(confirm('确认删除数据 "'+data.label+'" 吗?')){
@@ -96,8 +95,25 @@ class EditDome extends Component {
                                                 })
                                             }
                                         }}
-                                    >Θ</span>
-                                    
+                                    >➖</span>
+                                    <span 
+                                        onClick={function(){
+                                            // 模拟修改数据
+                                            let mockLabel = Math.random().toString(36).substr(2)
+                                            if(confirm('确认更改数据  "'+data.label+'" 为 "'+mockLabel+'" 吗?')){
+                                                // 将数据插入数据源中
+                                                let dataOption = self.tree.map(function(item){
+                                                    if(item.value == data.value){
+                                                        item.label = mockLabel
+                                                    }
+                                                    return item
+                                                })
+                                                self.setState({
+                                                    data:dataOption
+                                                })
+                                            }
+                                        }}
+                                    >✍️</span>
                                 </div>
                                 { subRender ? subRender() : false }
                             </div>

@@ -43,6 +43,7 @@
   line-height:30px;
   vertical-align: middle;
   color:#aaa;
+  font-size:10px;
 }
 ````
 
