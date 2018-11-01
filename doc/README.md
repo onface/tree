@@ -21,7 +21,9 @@
   position: relative;
   padding-left: 1.3em;
 }
-.face-tree-node--close .face-tree-node-icon:before { content: '+';}
+.face-tree-node--close > .face-tree-node-icon:before { content: '+';}
+.face-tree-node--open > .face-tree-node-icon:before { content: '-';}
+.face-tree-node--loading > .face-tree-node-icon:before { content: '○';}
 .face-tree-node--close {
   height: 30px;
   overflow-y: hidden;
@@ -36,7 +38,6 @@
   text-align:center;
   cursor:pointer;
 }
-.face-tree-node-icon:before { content: '-';}
 .face-tree-node-label:hover { background-color: #f0f8ff;}
 .face-tree-node-tool {
   display:inline-block;

@@ -20,6 +20,7 @@
     "$repository": "tree",
     "dependencies": {
         "checkbox.react": "0.3.12",
+        "mockjs": "^1.0.1-beta3",
         "prop-types": "^15.6.0",
         "react-spread-props": "^0.1.1",
         "util.react": "^1.6.0"

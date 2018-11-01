@@ -35,13 +35,15 @@ class BasicDome extends Component {
             <div className="face-tree">
                 {
                     self.tree.render.loop(function (data, subRender) {
+                    	let isopen = self.tree.render.open(data.value)
                         return (
                             <div 
                             	key={data.value} 
                             	className={cls({
                             		"face-tree-node":true,
                             		// open [渲染类函数]判断当前节点是否展开(需要声明时input中配置open)
-                        			"face-tree-node--close":!self.tree.render.open(data.value),
+                        			"face-tree-node--close":!isopen,
+                        			"face-tree-node--open":isopen,
                             	})}
                             >
                             	{/* haschild [渲染类函数]判断是否有子节点 */}

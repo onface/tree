@@ -36,10 +36,15 @@ class EditDome extends Component {
             <div className="face-tree">
                 {
                     self.tree.render.loop(function (data, subRender) {
+                        let isopen = self.tree.render.open(data.value)
                         return (
                             <div 
                             	key={data.value} 
-                            	className="face-tree-node"
+                            	className={cls({
+                                    "face-tree-node":true,
+                                    "face-tree-node--close":!isopen,
+                                    "face-tree-node--open":isopen,
+                                })}
                             >
 	                            {
 	                            	self.tree.render.hasChild(data)
@@ -66,7 +71,7 @@ class EditDome extends Component {
                                             // 模拟一个新数据
                                             let mockData = {
                                                 label:Math.random().toString(36).substr(2),
-                                                value:new Date().getTime()
+                                                value:String(new Date().getTime())
                                             }
                                             if(confirm('模拟用户创建一个新数据\n名称:'+mockData.label)){
                                                 // 将数据插入数据源中
@@ -80,6 +85,13 @@ class EditDome extends Component {
                                                 self.setState({
                                                     data:dataOption
                                                 })
+                                                // 新数据默认展开当前节点(即模拟的新数据的父节点)
+                                                let openArray = self.state.open
+                                                    openArray.push(data.value)
+                                                self.setState({
+                                                    open:openArray
+                                                })
+
                                             }
                                         }}
                                     >➕</span>
