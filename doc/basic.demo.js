@@ -8,10 +8,22 @@ class BasicDome extends Component {
         super(props)
         const self = this
         self.state = {
-            checked: ['1-1'],
-            open:[]
+            checked: [],
+            open:['1','2','1-2']
         }
         self.tree = new FaceTree({
+            options:{
+                extendParent: {
+                    check : false ,
+                    checkUntilAll : false , 
+                    uncheck : true ,
+                    uncheckUntilLast : true 
+                },
+                extendChild: {
+                    check : false,
+                    uncheck : true ,
+                },
+            },
             // 配置 所有选项data 选中项checked 展开项open
             input: function () {
                 return {
@@ -28,6 +40,7 @@ class BasicDome extends Component {
                 })
             }
         })
+        console.log(self.tree)
     }
     render() {
         const self = this

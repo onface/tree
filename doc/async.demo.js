@@ -65,7 +65,7 @@ class AsyncDome extends Component {
                                                         value:String(Random.natural())
                                                     }]
                                                 })
-                                                console.log(JSON.stringify(mockData,null,4))
+                                                console.log(JSON.stringify(mockData.children,null,4))
                                                 // 将数据插入数据源中
                                                 let dataOption = self.tree.map(function(item){
                                                     if(item.value == data.value){
