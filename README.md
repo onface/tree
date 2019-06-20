@@ -24,7 +24,7 @@
         <tr>
             <td align="center" >
                 <div class="face-one-feature-item">
-                    <img src="https://onface.live/design/media/seo/cogwheel.svg" alt="" class="face-one-feature-item-photo">
+                    <img src="https://onface.github.io/design/media/seo/cogwheel.svg" alt="" class="face-one-feature-item-photo">
                     <br />
                         <div class="face-one-feature-item-label">定制开发</div>
                         <div class="face-one-feature-item-desc">提供用户行为接口便于二次开发</div>
@@ -32,7 +32,7 @@
             </td>
             <td align="center" >
                 <div class="face-one-feature-item">
-                    <img src="https://onface.live/design/media/seo/browser.svg" alt="" class="face-one-feature-item-photo">
+                    <img src="https://onface.github.io/design/media/seo/browser.svg" alt="" class="face-one-feature-item-photo">
                     <br />
                     <div class="face-one-feature-item-label">用户体验</div>
                     <div class="face-one-feature-item-desc">丰富的展示细节接口</div>
@@ -40,7 +40,7 @@
             </td>
             <td align="center" >
                 <div class="face-one-feature-item">
-                    <img src="https://onface.live/design/media/seo/share.svg" alt="" class="face-one-feature-item-photo">
+                    <img src="https://onface.github.io/design/media/seo/share.svg" alt="" class="face-one-feature-item-photo">
                     <br />
                         <div class="face-one-feature-item-label">组件生态</div>
                         <div class="face-one-feature-item-desc">可与 <a href="https://onface.live/">onface</a> 中任意组件组合使用</div>

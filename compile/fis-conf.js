@@ -162,7 +162,7 @@ if (fis.project.currentMedia() !== 'npm') {
                                     ${markrun(settings.desc, {template: '<%- content %>'})}
                                 </div>
                                 <span class="face-one-code-info-switchCode ${settings.side?'fi fi-ellipsis':''}">
-                                    ${!settings.side?'<img src="https://onface.live/design/media/nice/dev.svg" alt="">':''}
+                                    ${!settings.side?'<img src="https://onface.github.io/design/media/nice/dev.svg" alt="">':''}
                                 </span>
                             </div>
                         </div>
@@ -173,12 +173,12 @@ if (fis.project.currentMedia() !== 'npm') {
                                     `<form class="face-one-code-source-tool-preview" action="https://codesandbox.io/api/v1/sandboxes/define" method="post" target="_blank" >
                                         <input type="hidden" name="parameters" value="${parametersData}">
                                         <button type="submit" class="face-one-code-source-tool-preview-submit" >
-                                            <img src="https://onface.live/design/media/cute/edit.svg" alt="">
+                                            <img src="https://onface.github.io/design/media/cute/edit.svg" alt="">
                                         </button>
                                     </form>`:''
                                 }
                                 <span class="face-one-code-source-tool-copy">
-                                    <img src="https://onface.live/design/media/nice/folder.svg" alt="">
+                                    <img src="https://onface.github.io/design/media/nice/folder.svg" alt="">
                                 </span>
                             </div>
                             ${code}
